@@ -14,7 +14,7 @@ LIBS_DIR = $(HOME)/Projects_WSL/ASM_Libs
 
 # Raylib libraries
 RAYLIB_INC = -I$(LIBS_DIR)/include       # Include path for Raylib
-RAYLIB_LIB = -L$(LIBS_DIR)/lib -lraylib  # Corrected library linking
+RAYLIB_LIB = -L$(LIBS_DIR)/lib -lraylib  # Raylib library path and linking
 
 # Raylib and its dependencies
 RAYLIB_DEPS = -L/usr/lib/i386-linux-gnu -lGL -lm -lpthread -ldl -lrt -lX11
@@ -25,10 +25,9 @@ RAYLIB_DEPS = -L/usr/lib/i386-linux-gnu -lGL -lm -lpthread -ldl -lrt -lX11
 
 ASM       = nasm
 CC		  = gcc
-LD        = ld
 RM        = rm -f
 ASSEM     = $(ASM) $(ASMFLAGS)
-LINK      = $(LD) $(TARGET) --dynamic-linker /lib/ld-linux.so.2  # Specify the correct dynamic linker
+LINK      = $(CC) -m32 -no-pie
 
 # ============================
 # Directories
